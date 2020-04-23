@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/txtMenuNameCusOrder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:text="@string/stringMenu"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.55" />
+
+        <Button
+            android:id="@+id/btnMinusCusOrder"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/ic_remove_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtMenuNameCusOrder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/txtMenuNameCusOrder"
+            app:layout_constraintTop_toTopOf="@+id/txtMenuNameCusOrder"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <TextView
+            android:id="@+id/txtQuantityCusOrder"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/stringQnty"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnMinusCusOrder"
+            app:layout_constraintStart_toEndOf="@+id/btnMinusCusOrder"
+            app:layout_constraintTop_toTopOf="@+id/btnMinusCusOrder" />
+
+        <Button
+            android:id="@+id/btnAddCusOrder"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/ic_add_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtQuantityCusOrder"
+            app:layout_constraintStart_toEndOf="@+id/txtQuantityCusOrder"
+            app:layout_constraintTop_toTopOf="@+id/txtQuantityCusOrder" />
+
+        <TextView
+            android:id="@+id/txtPriceCusOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@string/stringPrice"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnAddCusOrder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnAddCusOrder"
+            app:layout_constraintTop_toTopOf="@+id/btnAddCusOrder" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.google.android.material.card.MaterialCardView>-->
+
+</LinearLayout>

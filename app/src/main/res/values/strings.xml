@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">FoodQueue</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+
+    <string name="stringEnterUsername">Enter username</string>
+    <string name="stringEnterPassword">Enter password</string>
+    <string name="stringBACK">BACK</string>
+    <string name="stringCONFIRM">CONFIRM</string>
+    <string name="stringBILL">BILL</string>
+    <string name="stringQUEUE">QUEUE</string>
+
+    <array name="spinnerFoodType">
+        <item>-- Please select type of food --</item>
+        <item>MainCourse</item>
+        <item>Salad</item>
+        <item>Dessert</item>
+        <item>Drink</item>
+    </array>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="stringSUBMIT">SUBMIT</string>
+    <string name="stringCHECK">CHECK</string>
+    <string name="stringREF">REF</string>
+    <string name="stringMenu">Menu</string>
+    <string name="stringQnty">0</string>
+    <string name="stringTotal">000  BAHT</string>
+    <string name="stringTable">Tn:</string>
+    <string name="stringMenuStatus">Status</string>
+    <string name="stringUPDATE">UPDATE</string>
+    <string name="stringPrice">XX  BAHT</string>
+    <string name="stringCANCEL">CANCEL</string>
+    <string name="stringORDER">ORDER</string>
+    <string name="stringRole">Role</string>
+
+</resources>

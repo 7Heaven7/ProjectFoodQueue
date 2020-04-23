@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+<!--    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="#00FFFFFF">
+
+    </androidx.cardview.widget.CardView>-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainConstraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.775"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0">
+
+            <ImageView
+                android:id="@+id/imgFood"
+                android:layout_width="300dp"
+                android:layout_height="225dp"
+                android:padding="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.125"
+                app:srcCompat="@drawable/brownie" />
+
+            <TextView
+                android:id="@+id/txtMenuName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgFood"
+                android:gravity="center|top"
+                android:padding="8dp"
+                android:text="@string/stringMenu"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toTopOf="@+id/txtPrice"
+                app:layout_constraintTop_toBottomOf="@+id/imgFood"
+                tools:layout_editor_absoluteX="4dp" />
+
+            <TextView
+                android:id="@+id/txtPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtMenuName"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="@string/stringPrice"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgFood"
+                app:layout_constraintVertical_bias="0.800"
+                tools:layout_editor_absoluteX="4dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout1">
+
+            <TextView
+                android:id="@+id/txtNumber"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/stringQnty"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_toEndOf="@id/txtNumber"
+                android:background="@drawable/ic_add_black_24dp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtNumber"
+                app:layout_constraintStart_toEndOf="@+id/txtNumber"
+                app:layout_constraintTop_toTopOf="@+id/txtNumber" />
+
+            <Button
+                android:id="@+id/btnMinus"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_toStartOf="@id/txtNumber"
+                android:background="@drawable/ic_remove_black_24dp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtNumber"
+                app:layout_constraintEnd_toStartOf="@+id/txtNumber"
+                app:layout_constraintTop_toTopOf="@+id/txtNumber" />
+
+            <Button
+                android:id="@+id/btnOrder"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtNumber"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:text="@string/stringORDER"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtNumber" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

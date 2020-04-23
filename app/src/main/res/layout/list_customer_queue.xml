@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/txtMenuNameCustomerQueue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="50dp"
+            android:text="@string/stringMenu"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.55" />
+
+        <TextView
+            android:id="@+id/txtQntyCustomerQueue"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/stringQnty"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/txtMenuNameCustomerQueue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toEndOf="@id/txtMenuNameCustomerQueue"
+            app:layout_constraintTop_toTopOf="@id/txtMenuNameCustomerQueue"
+            app:layout_constraintWidth_percent="0.05" />
+
+        <TextView
+            android:id="@+id/txtStatusCustomerQueue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stringMenuStatus"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtQntyCustomerQueue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toEndOf="@+id/txtQntyCustomerQueue"
+            app:layout_constraintTop_toTopOf="@+id/txtQntyCustomerQueue"
+            app:layout_constraintWidth_percent="0.15" />
+
+        <Button
+            android:id="@+id/btnCancelCustomerQueue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stringCANCEL"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toEndOf="@+id/txtStatusCustomerQueue"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    </com.google.android.material.card.MaterialCardView>-->
+
+</LinearLayout>
