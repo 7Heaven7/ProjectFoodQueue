@@ -160,10 +160,10 @@ class FragAddEditMenu(private val listener: MenuRecyclerViewClickListener) : Fra
                     imageData.let {
                         addMenu(imageData)
                     }
-                } else { Toast.makeText(requireContext(), "Please select an type", Toast.LENGTH_LONG).show() }
+                } else { Toast.makeText(requireContext(), "Please select type of food.", Toast.LENGTH_LONG).show() }
             }
             else {
-                Toast.makeText(requireContext(), "Please select an image", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Please select an image.", Toast.LENGTH_LONG).show()
             }
         }
 
@@ -177,24 +177,13 @@ class FragAddEditMenu(private val listener: MenuRecyclerViewClickListener) : Fra
             if (!imageData.isNullOrEmpty()) {
                 updateMenu(imageData, id_menu)
             }
-            /*if (::bitmap.isInitialized) {
-                if (foodtypeCheck()) {
-                    val imageData = imageToBase64(bitmap = bitmap)
-                    imageData.let {
-                        updateMenu(imageData, id_menu)
-                    }
-                } else { Toast.makeText(requireContext(), "Please select an type", Toast.LENGTH_LONG).show() }
-            }
-            else {
-                Toast.makeText(requireContext(), "Please select an image", Toast.LENGTH_LONG).show()
-            }*/
         }
 
         btnDeleteMenu.setOnClickListener {
             if(id_menu !=- 1){
                 deleteMenu(id_menu)
             }else{
-                Toast.makeText(requireContext(), "Error deleting menu", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Error deleting menu.", Toast.LENGTH_LONG).show()
             }
         }
 
@@ -208,7 +197,7 @@ class FragAddEditMenu(private val listener: MenuRecyclerViewClickListener) : Fra
             val imageData = imageToBase64(bitmapToConvert)
             return imageData
         } else {
-            Toast.makeText(requireContext(), "Please select an type", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Please select type of food.", Toast.LENGTH_LONG).show()
             return ""
         }
     }
@@ -226,7 +215,7 @@ class FragAddEditMenu(private val listener: MenuRecyclerViewClickListener) : Fra
             .enqueue(object: Callback<DefaultResponse> {
                 override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
                     Toast.makeText(requireContext(), t.message, Toast.LENGTH_LONG).show()
-                    Log.d("add menu failure:", t.message)
+                    Log.d("$TAG Error adding menu.", t.message)
                 }
                 override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
                     if(response.isSuccessful){
@@ -248,7 +237,7 @@ class FragAddEditMenu(private val listener: MenuRecyclerViewClickListener) : Fra
             .enqueue(object: Callback<DefaultResponse> {
                 override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
                     Toast.makeText(requireContext(), t.message, Toast.LENGTH_LONG).show()
-                    Log.d("Update menu failure", t.message)
+                    Log.d("$TAG Error updating menu.", t.message)
                 }
                 override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
                     if(response.isSuccessful){
@@ -266,7 +255,7 @@ class FragAddEditMenu(private val listener: MenuRecyclerViewClickListener) : Fra
             .enqueue(object: Callback<DefaultResponse> {
                 override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
                     Toast.makeText(requireContext(), t.message, Toast.LENGTH_LONG).show()
-                    Log.d("Update menu failure", t.message)
+                    Log.d("$TAG Error deleting menu.", t.message)
                 }
                 override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
                     if(response.isSuccessful){
@@ -313,9 +302,9 @@ class FragAddEditMenu(private val listener: MenuRecyclerViewClickListener) : Fra
             if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 val intent = Intent(Intent.ACTION_PICK)
                 intent.setType("image/*")
-                startActivityForResult(Intent.createChooser(intent, "Select Image"), CODE_GALLERY_REQUEST)
+                startActivityForResult(Intent.createChooser(intent, "Select Image."), CODE_GALLERY_REQUEST)
             } else {
-                Toast.makeText(requireContext(), "You don't have permission to access gallery", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "You don't have permission to access gallery.", Toast.LENGTH_SHORT).show()
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
