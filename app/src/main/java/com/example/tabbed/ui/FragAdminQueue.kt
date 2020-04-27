@@ -27,7 +27,7 @@ import java.util.*
 class FragAdminQueue(private val listener: ClickListenerGetView) : Fragment(), OrderListRecyclerViewClickListener {
     private val TAG = "TAG FragAdminQueue"
     private val adapter = AdminQueueAdapter(this)
-    lateinit var adminQueueViewModel: AdminQueueViewModel
+    //lateinit var adminQueueViewModel: AdminQueueViewModel
     private var timer = Timer()
 
     override fun onCreateView(
@@ -45,10 +45,6 @@ class FragAdminQueue(private val listener: ClickListenerGetView) : Fragment(), O
         recyclerViewAdminQueue.setHasFixedSize(true)
         recyclerViewAdminQueue.adapter = adapter
 
-        /*swipeRefreshAdminQueue.setOnRefreshListener {
-            loadOrder()
-        }
-        loadOrder()*/
 
 /*        adminQueueViewModel = ViewModelProviders.of(this).get(AdminQueueViewModel::class.java)
         Log.d(TAG, "WTF DOOD")
@@ -70,11 +66,9 @@ class FragAdminQueue(private val listener: ClickListenerGetView) : Fragment(), O
     }
 
     private fun loadOrder() {
-        //swipeRefreshAdminQueue.isRefreshing = true
         RetrofitClient.instance.adminGetOrderAPI()
             .enqueue(object: Callback<AdminGetOrderResponse> {
                 override fun onFailure(call: Call<AdminGetOrderResponse>, t: Throwable) {
-                    //swipeRefreshAdminQueue.isRefreshing = false
                     Toast.makeText(requireContext(), t.message, Toast.LENGTH_LONG).show()
                     Log.d("$TAG Failure", t.message!!)
                 }

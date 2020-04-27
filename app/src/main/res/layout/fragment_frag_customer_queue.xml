@@ -43,8 +43,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swiperRefreshCustomerQueue"
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewCustomerQueue"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginLeft="8dp"
@@ -56,18 +57,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtQueueLeftCustomerQueue"
-            app:layout_constraintVertical_bias="0">
+            app:layout_constraintVertical_bias="0"
+            android:scrollbars="vertical"
+            tools:itemCount="4"
+            tools:listitem="@layout/list_customer_queue">
+        </androidx.recyclerview.widget.RecyclerView>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewCustomerQueue"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="vertical"
-                tools:itemCount="4"
-                tools:listitem="@layout/list_customer_queue">
-
-            </androidx.recyclerview.widget.RecyclerView>
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

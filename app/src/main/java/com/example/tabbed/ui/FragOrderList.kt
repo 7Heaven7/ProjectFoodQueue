@@ -1,33 +1,24 @@
 package com.example.tabbed.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.tabbed.Adapter.OrderListAdapter2
+import com.example.tabbed.Adapter.OrderListAdapter
 import com.example.tabbed.Util.OrderRecyclerViewClickListener
-import com.example.tabbed.Backend.RetrofitClient
-import com.example.tabbed.Backend.SharedPrefManager
 import com.example.tabbed.Model.*
 import com.example.tabbed.R
-import com.example.tabbed.Response.DefaultResponse
 import com.example.tabbed.ViewModel.OrderListViewModel
 import kotlinx.android.synthetic.main.fragment_frag_order_minilist.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-
 
 
 class FragOrderList : Fragment(), OrderRecyclerViewClickListener {
     private val TAG = "OrderListAc"
-    private val adapter = OrderListAdapter2(this)
+    private val adapter = OrderListAdapter(this)
     private var totalPrice = 0
     lateinit var orderViewModel: OrderListViewModel
     private var oldList: List<OrderListItem2> = emptyList()

@@ -5,19 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/viewMenuRefreshLayout"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMenus"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewMenus"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbarSize="8dp"
-            android:scrollbars="horizontal"
-            tools:itemCount="2"
-            tools:listitem="@layout/list_menu" />
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        android:layout_height="match_parent"
+        android:scrollbarSize="8dp"
+        android:scrollbars="horizontal"
+        tools:itemCount="2"
+        tools:listitem="@layout/list_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

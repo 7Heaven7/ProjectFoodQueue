@@ -44,8 +44,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipeRefreshAdminBill"
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewAdminBill"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginLeft="8dp"
@@ -58,18 +60,12 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtTitleBillAdminBill"
-            app:layout_constraintVertical_bias="0">
+            app:layout_constraintVertical_bias="0"
+            android:scrollbars="vertical"
+            tools:itemCount="2"
+            tools:listitem="@layout/list_admin_bill">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewAdminBill"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="vertical"
-                tools:itemCount="2"
-                tools:listitem="@layout/list_admin_bill">
-
-            </androidx.recyclerview.widget.RecyclerView>
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </androidx.recyclerview.widget.RecyclerView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

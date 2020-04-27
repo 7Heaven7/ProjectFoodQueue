@@ -42,31 +42,22 @@ class FragCustomerBill(private val listener: ClickListenerGetView) : Fragment() 
         recyclerViewCustomerBill.setHasFixedSize(true)
         recyclerViewCustomerBill.adapter = adapter
 
-        /*swipeRefreshCustomerBill.setOnRefreshListener {
-            loadBill()
-        }
-        loadBill()*/
-
         btnBackCustomerBill.setOnClickListener {
             listener.getViewOnClick(btnBackCustomerBill)
         }
     }
 
     private fun loadBill() {
-        //swipeRefreshCustomerBill.isRefreshing = true
-
         val user = (SharedPrefManager.getInstance(requireContext()).getUser)
         val id_usertable = user.id_user
 
         RetrofitClient.instance.customerGetBillAPI(id_usertable)
             .enqueue(object: Callback<UserBillResponse> {
                 override fun onFailure(call: Call<UserBillResponse>, t: Throwable) {
-                    //swipeRefreshCustomerBill.isRefreshing = false
                     //Toast.makeText(requireContext(), t.message, Toast.LENGTH_LONG).show()
                     Log.d("$TAG Failure", t.message!!)
                 }
                 override fun onResponse(call: Call<UserBillResponse>, response: Response<UserBillResponse>) {
-                    //swipeRefreshCustomerBill.isRefreshing = false
                     if(response.isSuccessful){
                         val order = response.body()?.user_bill
                         showOrder(order?.orderlist)

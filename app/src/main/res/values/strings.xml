@@ -34,5 +34,7 @@
     <string name="stringCANCEL">CANCEL</string>
     <string name="stringORDER">ORDER</string>
     <string name="stringRole">Role</string>
+    <string name="stringSTAFF">STAFF</string>
+    <string name="stringCUSTOMER">CUSTOMER</string>
 
 </resources>

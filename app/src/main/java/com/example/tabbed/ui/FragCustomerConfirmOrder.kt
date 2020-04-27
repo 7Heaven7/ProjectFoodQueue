@@ -77,7 +77,7 @@ class FragCustomerConfirmOrder(private val listener: ClickListenerGetView) : Fra
 
     }
 
-    fun setData(){
+    private fun setData(){
         orderViewModel.getAllOrdersVM().observe(viewLifecycleOwner, Observer<List<OrderListItem2>> {
             listToSendToServer.clear()
             adapter.submitList(it.toList())

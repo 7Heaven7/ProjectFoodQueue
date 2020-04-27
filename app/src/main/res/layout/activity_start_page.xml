@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#57FBFF80">
 
 
 <!--    <ImageView
@@ -57,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="CUSTOMER"
+        android:text="@string/stringCUSTOMER"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@+id/role_customer_start"
         app:layout_constraintStart_toStartOf="@+id/role_customer_start"
@@ -67,7 +68,7 @@
         android:id="@+id/txtChooseAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="EMPLOYEE"
+        android:text="@string/stringSTAFF"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@+id/role_admin_start"
         app:layout_constraintStart_toStartOf="@+id/role_admin_start"

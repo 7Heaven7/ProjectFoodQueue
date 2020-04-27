@@ -43,11 +43,6 @@ class FragAdminBill(private val listener: ClickListenerGetView) : Fragment(), Ad
         recyclerViewAdminBill.setHasFixedSize(true)
         recyclerViewAdminBill.adapter = adapter
 
-        /*swipeRefreshAdminBill.setOnRefreshListener {
-            loadBill()
-        }
-        loadBill()*/
-
         setupButton()
     }
 
@@ -62,17 +57,13 @@ class FragAdminBill(private val listener: ClickListenerGetView) : Fragment(), Ad
     }
 
     private fun loadBill() {
-        //swipeRefreshAdminBill.isRefreshing = true
-
         RetrofitClient.instance.adminGetBillAPI()
             .enqueue(object: Callback<AdminBillResponse> {
                 override fun onFailure(call: Call<AdminBillResponse>, t: Throwable) {
-                    //swipeRefreshAdminBill.isRefreshing = false
                     Toast.makeText(requireContext(), t.message, Toast.LENGTH_LONG).show()
                     Log.d("$TAG Failure", t.message)
                 }
                 override fun onResponse(call: Call<AdminBillResponse>, response: Response<AdminBillResponse>) {
-                    //swipeRefreshAdminBill.isRefreshing = false
                     if(response.isSuccessful){
                         val order = response.body()?.user_bill
                         showOrder(order)

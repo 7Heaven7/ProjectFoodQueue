@@ -51,26 +51,20 @@ class FragTwo(private val listener: MenuRecyclerViewClickListener) : Fragment(),
         recyclerViewMenus.setHasFixedSize(true)
         recyclerViewMenus.adapter = adapter
 
-        viewMenuRefreshLayout.setOnRefreshListener {
-            loadMenus()
-        }
         loadMenus()
 
         orderViewModel = ViewModelProviders.of(this).get(OrderListViewModel::class.java)
     }
 
     private fun loadMenus(){
-        viewMenuRefreshLayout.isRefreshing = true
 
         RetrofitClient.instance.getMenusAPI2(type)
             .enqueue(object: Callback<GetMenuResponse> {
                 override fun onFailure(call: Call<GetMenuResponse>, t: Throwable) {
-                    viewMenuRefreshLayout.isRefreshing = false
                     Toast.makeText(activity, t.message, Toast.LENGTH_LONG).show()
                     Log.d(TAG, t.message!!)
                 }
                 override fun onResponse(call: Call<GetMenuResponse>, response: Response<GetMenuResponse>) {
-                    viewMenuRefreshLayout.isRefreshing = false
                     if(response.isSuccessful){
                         val retrievedMenus = response.body()?.menu
                         showOrder(retrievedMenus)

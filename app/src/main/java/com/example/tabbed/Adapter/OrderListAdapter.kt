@@ -13,7 +13,7 @@ import com.example.tabbed.Util.OrderRecyclerViewClickListener
 import kotlinx.android.synthetic.main.list_order.view.*
 
 
-class OrderListAdapter2(private val listener: OrderRecyclerViewClickListener) : ListAdapter<OrderListItem2, OrderListAdapter2.OrderListHolder>(DIFF_CALLBACK) {
+class OrderListAdapter(private val listener: OrderRecyclerViewClickListener) : ListAdapter<OrderListItem2, OrderListAdapter.OrderListHolder>(DIFF_CALLBACK) {
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<OrderListItem2>() {

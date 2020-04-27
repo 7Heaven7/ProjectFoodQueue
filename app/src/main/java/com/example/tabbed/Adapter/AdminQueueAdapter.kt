@@ -17,13 +17,11 @@ class AdminQueueAdapter(private val listener: OrderListRecyclerViewClickListener
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<OrderListDetail>() {
             override fun areItemsTheSame(oldItem: OrderListDetail, newItem: OrderListDetail): Boolean {
-                Log.d("WTF", "THE SAME")
                 val isSameItem = (oldItem.id_orderlist == newItem.id_orderlist)
                 return isSameItem
             }
 
             override fun areContentsTheSame(oldItem: OrderListDetail, newItem: OrderListDetail): Boolean {
-                Log.d("WTF", "THE SAME2")
                 val isSameContent = (oldItem.id_orderlist == newItem.id_orderlist &&
                         oldItem.id_bill == newItem.id_bill &&
                         oldItem.reference == newItem.reference &&
@@ -69,11 +67,9 @@ class AdminQueueAdapter(private val listener: OrderListRecyclerViewClickListener
             itemView.btnUpdateAdminQueue.setOnClickListener {
                 listener.orderListOnClick(itemView.btnUpdateAdminQueue, order)
             }
-
             itemView.btnCancelAdminQueue.setOnClickListener{
                 listener.orderListOnClick(itemView.btnCancelAdminQueue, order)
             }
-
 
         }
     }

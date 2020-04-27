@@ -46,11 +46,6 @@ class FragCustomerQueue(private val listener: ClickListenerGetView) : Fragment()
         recyclerViewCustomerQueue.setHasFixedSize(true)
         recyclerViewCustomerQueue.adapter = adapter
 
-        /*swiperRefreshCustomerQueue.setOnRefreshListener {
-            loadOrder()
-        }
-        loadOrder()*/
-
     }
 
     private fun setupButton() {
@@ -63,20 +58,16 @@ class FragCustomerQueue(private val listener: ClickListenerGetView) : Fragment()
     }
 
     private fun loadOrder() {
-        //swiperRefreshCustomerQueue.isRefreshing = true
-
         val user = (SharedPrefManager.getInstance(requireContext()).getUser)
         val id_usertable = user.id_user
 
         RetrofitClient.instance.customerGetOrderAPI(id_usertable)
             .enqueue(object: Callback<CustomerQueueResponse> {
                 override fun onFailure(call: Call<CustomerQueueResponse>, t: Throwable) {
-                    //swiperRefreshCustomerQueue.isRefreshing = false
                     Toast.makeText(requireContext(), t.message, Toast.LENGTH_LONG).show()
                     Log.d("$TAG Failure", t.message!!)
                 }
                 override fun onResponse(call: Call<CustomerQueueResponse>, response: Response<CustomerQueueResponse>) {
-                    //swiperRefreshCustomerQueue.isRefreshing = false
                     if(response.isSuccessful){
                         val order = response.body()?.orderlist
                         showOrder(order)
