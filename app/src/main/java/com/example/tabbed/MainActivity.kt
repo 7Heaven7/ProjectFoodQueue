@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity(), MenuRecyclerViewClickListener {
             userRole = user!!.role
             txtRole.text = user!!.role
             if (userRole == "Customer") txtTable.text = "Table : ${user!!.user}"
-            if (userRole == "Admin"){
+            if (userRole == "Manager"){
                 //fabAddEditMenu.show()
                 txtTable.text = "${user!!.user}"
                 btnConfirmMain.visibility = View.GONE
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity(), MenuRecyclerViewClickListener {
 
         val fragmentTransaction = fragmentManager.beginTransaction()
         if (userRole == "Customer") fragmentTransaction.replace(R.id.orderlayout, fragmentOrder)
-        else if (userRole == "Admin") fragmentTransaction.replace(R.id.orderlayout, fragmentAdminMiniOrder)
+        else if (userRole == "Managaer") fragmentTransaction.replace(R.id.orderlayout, fragmentAdminMiniOrder)
         fragmentTransaction.replace(R.id.tabberlayout, fragmentTabLayout)
         fragmentTransaction.commit()
 
@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity(), MenuRecyclerViewClickListener {
             }
         }
         btnBillMain.setOnClickListener {
-            if (userRole == "Admin" || userRole == "Waiter"){
+            if (userRole == "Manager" || userRole == "Waiter"){
                 val intent = Intent(applicationContext, CustomerDetailActivity::class.java)
                 intent.putExtra("FRAGMENT_CODE", "AdminGetBill")
                 startActivity(intent)
@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity(), MenuRecyclerViewClickListener {
                 intent.putExtra("FRAGMENT_CODE", "CustomerSeeQueue")
                 startActivity(intent)
             }
-            else if (userRole == "Admin" || userRole == "Cooker" || userRole == "Waiter"){
+            else if (userRole == "Manager" || userRole == "Cooker" || userRole == "Waiter"){
                 val intent = Intent(applicationContext, CustomerDetailActivity::class.java)
                 intent.putExtra("FRAGMENT_CODE", "AdminSeeQueue")
                 startActivity(intent)
@@ -132,7 +132,7 @@ class MainActivity : AppCompatActivity(), MenuRecyclerViewClickListener {
             true
         }
         fabAddEditMenu.setOnClickListener{
-            if (userRole == "Admin"){
+            if (userRole == "Manager"){
                 //fabAddEditMenu.hide()
                 val fragmentTransaction = fragmentManager.beginTransaction()
                 fragmentTransaction.addToBackStack(null)
@@ -144,7 +144,7 @@ class MainActivity : AppCompatActivity(), MenuRecyclerViewClickListener {
 
     override fun onResume() {
         super.onResume()
-        if (userRole == "Admin"){
+        if (userRole == "Manager"){
             Log.d(TAG, "onResumeShow")
             //fabAddEditMenu.show()
         }

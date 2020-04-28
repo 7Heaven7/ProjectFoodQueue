@@ -32,17 +32,18 @@ class StartPage : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        if (SharedPrefManager.getInstance(this).loginStatus == "Admin") {
+        val staffRole: List<String> = listOf("Manager", "Cooker", "Waiter")
+        if(staffRole.contains(SharedPrefManager.getInstance(this).loginStatus)){
             val intent = Intent(applicationContext, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-
             startActivity(intent)
+
         } else if (SharedPrefManager.getInstance(this).loginStatus == "Customer") {
             val intent = Intent(applicationContext, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-
             startActivity(intent)
-        }else{
+
+        } else{
             Log.d("Login",(SharedPrefManager.getInstance(this).loginStatus))
         }
 
