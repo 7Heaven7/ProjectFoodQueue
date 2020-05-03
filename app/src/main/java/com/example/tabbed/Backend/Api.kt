@@ -19,7 +19,7 @@ interface Api {
     @POST("orderMenu")
     fun orderMenuAPI( //post value
         @Field("id_menu") id_menu: Int,
-        @Field("id_usertable") id_usertable: Int,
+        @Field("id_table") id_table: Int,
         @Field("quantity") quantity: Int
     ): Call<DefaultResponse> //response data
 
@@ -27,55 +27,55 @@ interface Api {
     @POST("orderMenu2")
     fun orderMenuAPI2( //post value
         //@Field("id_menu") id_menu: List<Int>,
-        //@Field("id_usertable") id_usertable: List<Int>,
+        //@Field("id_table") id_table: List<Int>,
         //@Field("quantity") quantity: List<Int>,
         @FieldMap(encoded = true) orderlist: Map<String, Int>
     ): Call<DefaultResponse> //response data
 
     @GET("customerGetOrder?")
     fun customerGetOrderAPI(
-        @Query("id_usertable") id_usertable: Int
+        @Query("id_table") id_table: Int
     ): Call<CustomerQueueResponse>
 
     @FormUrlEncoded
     @PUT("customerPendingBill")
     fun customerPendingBillAPI(
-        @Field("id_usertable") id_usertable: Int
+        @Field("id_table") id_table: Int
     ):Call<DefaultResponse>
 
     @GET("customerGetBill?")
     fun customerGetBillAPI(
-        @Query("id_usertable") id_usertable: Int
+        @Query("id_table") id_table: Int
     ): Call<UserBillResponse>
 
     @FormUrlEncoded
-    @POST("customerlogin")
+    @POST("customerLogin")
     fun userLoginAPI(
-        @Field("user") user: String,
+        @Field("table_name") user: String,
         @Field("password") password: String
     ):Call<LoginResponse>
 
     ////////////////////////////// EMPLOYEE //////////////////////////////
 
     @FormUrlEncoded
-    @POST("adminlogin")
+    @POST("staffLogin")
     fun adminLoginAPI(
-        @Field("admin") admin_name: String,
+        @Field("staff_name") staff_name: String,
         @Field("password") password: String
     ):Call<LoginResponse>
 
-    @GET("adminGetOrder")
+    @GET("staffGetOrder")
     fun adminGetOrderAPI(
     ):Call<AdminGetOrderResponse>
 
     @FormUrlEncoded
-    @PUT("adminUpdateOrder/{id_orderlist}")
+    @PUT("staffUpdateOrder/{id_orderlist}")
     fun adminUpdateOrderAPI(
         @Path("id_orderlist") id_orderlist: Int,
         @Field("menu_status") menu_status: String
     ):Call<DefaultResponse>
 
-    @GET("adminGetBill")
+    @GET("staffGetBill")
     fun adminGetBillAPI(
     ):Call<AdminBillResponse>
 
@@ -87,7 +87,7 @@ interface Api {
     ):Call<DefaultResponse>
 
     @FormUrlEncoded
-    @PUT("adminUpdateBill/{id_bill}")
+    @PUT("staffUpdateBill/{id_bill}")
     fun adminUpdateBillAPI(
         @Path("id_bill") id_bill: Int,
         @Field("bill_status") bill_status: String

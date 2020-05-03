@@ -90,8 +90,13 @@ class FragAdminQueue(private val listener: ClickListenerGetView) : Fragment(), O
     private fun showOrder(getOrder: List<OrderListDetail>?){
         adapter.submitList(getOrder)
     }
+
     private fun setView(count: Int){
-        txtTitleAdminQueue.text = "USER'S  ORDER ($count)"
+        when (count) {
+            0 -> txtTitleAdminQueue.text = "THERE IN NO ORDER"
+            1 -> txtTitleAdminQueue.text = "THERE IS ($count) ORDER"
+            else -> txtTitleAdminQueue.text = "THERE ARE ($count) ORDERS"
+        }
     }
 
     override fun onResume() {
@@ -100,14 +105,14 @@ class FragAdminQueue(private val listener: ClickListenerGetView) : Fragment(), O
             override fun run() {
                 activity!!.runOnUiThread {
                     loadOrder()
-                    Log.d(TAG, "LoadOrder ")
+                    //Log.d(TAG, "LoadOrder ")
                 }
             }
         }, 500, 10*1000)
     }
     override fun onStop() {
         super.onStop()
-        Log.d(TAG, "onStop")
+        //Log.d(TAG, "onStop")
         timer.cancel()
         timer = Timer()
         //timer.purge()

@@ -24,7 +24,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CustomerDetailActivity : AppCompatActivity(), ClickListenerGetView {
+class DetailActivity : AppCompatActivity(), ClickListenerGetView {
     private val fragmentManager = supportFragmentManager
     private val fragmentCustomerOrder = FragCustomerConfirmOrder(this)
     private val fragmentCustomerQueue = FragCustomerQueue(this)
@@ -43,7 +43,7 @@ class CustomerDetailActivity : AppCompatActivity(), ClickListenerGetView {
             if (user!!.role == "Customer") {
                 txtUserNameCustomerDetail.text = "TABLE : ${user!!.user}"
             } else {
-                txtUserNameCustomerDetail.text = "${user!!.role}"
+                txtUserNameCustomerDetail.text = "${user!!.user}"
             }
         } else {
             val intent = Intent(applicationContext, StartPage::class.java)
@@ -142,7 +142,7 @@ class CustomerDetailActivity : AppCompatActivity(), ClickListenerGetView {
                     .enqueue(object : Callback<DefaultResponse> {
                         override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
                             Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
-                            Log.d("Order menu failure:", t.message)
+                            Log.d("$TAG Order menu failed", t.message)
                         }
 
                         override fun onResponse(
@@ -193,7 +193,7 @@ class CustomerDetailActivity : AppCompatActivity(), ClickListenerGetView {
             val hashMap = hashMapOf<String, Int>()
             for (i in listToSendToServer.indices) {
                 hashMap.put("id_menu[$i]", listToSendToServer[i].menuData.id_menu)
-                hashMap.put("id_usertable", id_user)
+                hashMap.put("id_table", id_user)
                 hashMap.put("quantity[$i]", listToSendToServer[i].quantity)
             }
                 //RetrofitClient.instance.orderMenuAPI2(id_menu, id_usertable, quantity)
@@ -201,7 +201,7 @@ class CustomerDetailActivity : AppCompatActivity(), ClickListenerGetView {
                     .enqueue(object : Callback<DefaultResponse> {
                         override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
                             Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
-                            Log.d("Order menu failure:", t.message)
+                            Log.d("$TAG Order menu failed", t.message)
                         }
                         override fun onResponse(
                             call: Call<DefaultResponse>,
@@ -242,7 +242,7 @@ class CustomerDetailActivity : AppCompatActivity(), ClickListenerGetView {
             .enqueue(object : Callback<DefaultResponse> {
                 override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
-                    Log.d("$TAG admin update status failed:", t.message)
+                    Log.d("$TAG admin update status failed", t.message)
                 }
 
                 override fun onResponse(
@@ -312,7 +312,7 @@ class CustomerDetailActivity : AppCompatActivity(), ClickListenerGetView {
                     override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
                         Toast.makeText(fragmentCustomerQueue.context, t.message, Toast.LENGTH_LONG)
                             .show()
-                        Log.d("CustomerQueue failure", t.message)
+                        Log.d("CustomerQueue failed", t.message)
                     }
 
                     override fun onResponse(
@@ -334,7 +334,7 @@ class CustomerDetailActivity : AppCompatActivity(), ClickListenerGetView {
                     }
                 })
 
-        } else Log.d(TAG, "Something went wrong")
+        } else Log.d(TAG, "Something went wrong.")
 
     } //end fun
 
@@ -345,7 +345,7 @@ class CustomerDetailActivity : AppCompatActivity(), ClickListenerGetView {
             .enqueue(object : Callback<DefaultResponse> {
                 override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
                     Toast.makeText(fragmentAdminBill.context, t.message, Toast.LENGTH_LONG).show()
-                    Log.d("AdminUpdateBill failure", t.message)
+                    Log.d("$TAG AdminUpdateBill failed", t.message)
                 }
 
                 override fun onResponse(
@@ -358,7 +358,7 @@ class CustomerDetailActivity : AppCompatActivity(), ClickListenerGetView {
                             response.body()?.message,
                             Toast.LENGTH_SHORT
                         ).show()
-                        Log.d("AdminUpdateBill success", response.body()?.message.toString())
+                        Log.d("$TAG AdminUpdateBill success", response.body()?.message.toString())
                     } else { //response.errorBody()?.string()
                         Toast.makeText(
                             fragmentAdminBill.context,

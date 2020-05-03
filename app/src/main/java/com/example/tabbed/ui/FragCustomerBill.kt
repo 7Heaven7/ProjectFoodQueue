@@ -100,14 +100,14 @@ class FragCustomerBill(private val listener: ClickListenerGetView) : Fragment() 
             override fun run() {
                 activity!!.runOnUiThread {
                     loadBill()
-                    Log.d(TAG, "LoadBill ")
+                    //Log.d(TAG, "LoadBill ")
                 }
             }
         }, 1*1000, 15*1000)
     }
     override fun onStop() {
         super.onStop()
-        Log.d(TAG, "onStop")
+        //Log.d(TAG, "onStop")
         timer.cancel()
         timer = Timer()
         //timer.purge()

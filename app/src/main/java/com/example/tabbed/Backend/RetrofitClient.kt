@@ -9,7 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 
 object RetrofitClient {
     private val AUTH = "Basic " + Base64.encodeToString("admin:1234".toByteArray(), Base64.NO_WRAP)
-    const val BASE_URL = "http://192.168.1.41/FoodApiREST/public/"
+    const val BASE_URL = "http://192.168.1.42/FoodApiREST/public/"
 
     private val interceptor = run {
         val httpLoggingInterceptor = HttpLoggingInterceptor()

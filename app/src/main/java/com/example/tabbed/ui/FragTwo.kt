@@ -26,7 +26,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class FragTwo(private val listener: MenuRecyclerViewClickListener) : Fragment(), MenuRecyclerViewClickListener {
-    private val TAG = "FragTwo"
+    private val TAG = "TAG FragTwo"
     private val type = "Salad"
     private val adapter = MenuListAdapter(this)
     lateinit var orderViewModel: OrderListViewModel
@@ -62,7 +62,7 @@ class FragTwo(private val listener: MenuRecyclerViewClickListener) : Fragment(),
             .enqueue(object: Callback<GetMenuResponse> {
                 override fun onFailure(call: Call<GetMenuResponse>, t: Throwable) {
                     Toast.makeText(activity, t.message, Toast.LENGTH_LONG).show()
-                    Log.d(TAG, t.message!!)
+                    Log.d("$TAG failed getting menus", t.message)
                 }
                 override fun onResponse(call: Call<GetMenuResponse>, response: Response<GetMenuResponse>) {
                     if(response.isSuccessful){
@@ -87,7 +87,7 @@ class FragTwo(private val listener: MenuRecyclerViewClickListener) : Fragment(),
 
         //check quantity if > 0 get new order
         if(order.quantity == 0){
-            Toast.makeText(requireContext(), "Cannot order with 0 ${order.menuData.menu_name} ID: ${order.menuData.id_menu}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Cannot order with 0 ${order.menuData.menu_name}.", Toast.LENGTH_SHORT).show()
         }
         //check if order the same item
         else {
@@ -104,13 +104,13 @@ class FragTwo(private val listener: MenuRecyclerViewClickListener) : Fragment(),
                     order.quantity
                 )
                 orderViewModel.insert(_order)
-                Toast.makeText(requireContext(), "${order.quantity} ${order.menuData.menu_name} added to list", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "${order.quantity} ${order.menuData.menu_name} added to list.", Toast.LENGTH_SHORT).show()
 
             } else{
                 //same item
                 existOrder[0].quantity += order.quantity
                 orderViewModel.update(existOrder[0])
-                Toast.makeText(requireContext(), "${order.quantity} ${order.menuData.menu_name} updated list", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "${order.quantity} ${order.menuData.menu_name} added to list.", Toast.LENGTH_SHORT).show()
             }
         }
 

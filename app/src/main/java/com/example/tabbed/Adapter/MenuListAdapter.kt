@@ -63,7 +63,7 @@ class MenuListAdapter(private val listener: MenuRecyclerViewClickListener) : Lis
 
         fun bindItem(menu: MenuModel){
 
-            if (SharedPrefManager.getInstance(itemView.context).loginStatus == "Admin"){
+            if (SharedPrefManager.getInstance(itemView.context).loginStatus != "Customer"){
                 itemView.btnAdd.visibility = View.INVISIBLE
                 itemView.btnMinus.visibility = View.INVISIBLE
                 itemView.btnOrder.visibility = View.INVISIBLE
@@ -104,7 +104,7 @@ class MenuListAdapter(private val listener: MenuRecyclerViewClickListener) : Lis
             }
 
             itemView.imgFood.setOnLongClickListener {
-                if(SharedPrefManager.getInstance(view.context).loginStatus == "Admin") {
+                if(SharedPrefManager.getInstance(view.context).loginStatus == "Manager") {
                     val newMenu = MenuModel(menu.id_menu, menu.menu_name, imageURL, menu.price, menu.type, menu.latest_update)
                     listener.menuOnClick(itemView.imgFood, newMenu, itemQuantity)
                 }

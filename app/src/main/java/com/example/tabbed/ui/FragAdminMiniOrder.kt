@@ -66,7 +66,7 @@ class FragAdminMiniOrder : Fragment() {
             override fun run() {
                 activity!!.runOnUiThread {
                     loadOrder()
-                    Log.d(TAG, "LoadOrder ")
+                    //Log.d(TAG, "LoadOrder ")
                 }
             }
         }, 500, 20 * 1000)
@@ -74,7 +74,7 @@ class FragAdminMiniOrder : Fragment() {
 
     override fun onStop() {
         super.onStop()
-        Log.d(TAG, "onStop")
+        //Log.d(TAG, "onStop")
         timer.cancel()
         timer = Timer()
         //timer.purge()

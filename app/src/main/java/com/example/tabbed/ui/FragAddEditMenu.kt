@@ -286,6 +286,7 @@ class FragAddEditMenu(private val listener: MenuRecyclerViewClickListener) : Fra
                 val inputStream: InputStream? = activity!!.contentResolver.openInputStream(filepath)
                 bitmap = BitmapFactory.decodeStream(inputStream)
                 imageFoodAddEdit.setImageBitmap(bitmap)
+                imageFoodAddEdit.alpha = 1.0F
             } catch (e: FileNotFoundException){
                 e.printStackTrace()
             }
@@ -302,7 +303,7 @@ class FragAddEditMenu(private val listener: MenuRecyclerViewClickListener) : Fra
             if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 val intent = Intent(Intent.ACTION_PICK)
                 intent.setType("image/*")
-                startActivityForResult(Intent.createChooser(intent, "Select Image."), CODE_GALLERY_REQUEST)
+                startActivityForResult(Intent.createChooser(intent, "Select an รmage."), CODE_GALLERY_REQUEST)
             } else {
                 Toast.makeText(requireContext(), "You don't have permission to access gallery.", Toast.LENGTH_SHORT).show()
             }

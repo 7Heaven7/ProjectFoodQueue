@@ -67,7 +67,7 @@ class AdminLogin : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        val staffRole: List<String> = listOf("Manager", "Cooker", "Waiter")
+        val staffRole: List<String> = listOf("Admin", "Manager", "Chef", "Waiter")
         if(staffRole.contains(SharedPrefManager.getInstance(this).loginStatus)){
             val intent = Intent(applicationContext, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

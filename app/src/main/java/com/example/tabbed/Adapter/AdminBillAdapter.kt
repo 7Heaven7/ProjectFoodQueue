@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.vectordrawable.graphics.drawable.AnimationUtilsCompat
+import com.example.tabbed.Backend.SharedPrefManager
 import com.example.tabbed.Model.UserBill
 import com.example.tabbed.R
 import com.example.tabbed.Util.AdminBillRecyclerViewClickListener
@@ -33,7 +34,7 @@ class AdminBillAdapter(private val listener: AdminBillRecyclerViewClickListener)
                         oldItem.bill.reference == newItem.bill.reference &&
                         oldItem.bill.orderlist == newItem.bill.orderlist &&
                         oldItem.bill.total == newItem.bill.total &&
-                        oldItem.id_user == newItem.id_user)
+                        oldItem.id_table == newItem.id_table)
                 return isSameContent
             }
         }
@@ -90,6 +91,13 @@ class AdminBillAdapter(private val listener: AdminBillRecyclerViewClickListener)
                     itemView.imgExpandAdminBill.setBackgroundResource(R.drawable.ic_keyboard_arrow_right_black_24dp)
 
                 }
+            }
+
+            if (SharedPrefManager.getInstance(view.context).loginStatus == "Waiter") {
+                itemView.btnCheckAdminBill.visibility = View.VISIBLE
+            }
+            else {
+                itemView.btnCheckAdminBill.visibility = View.GONE
             }
 
             itemView.btnCheckAdminBill.setOnClickListener {

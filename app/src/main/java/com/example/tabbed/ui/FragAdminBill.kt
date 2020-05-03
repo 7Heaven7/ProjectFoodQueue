@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tabbed.Adapter.AdminBillAdapter
 import com.example.tabbed.Backend.RetrofitClient
-import com.example.tabbed.CustomerDetailActivity
 import com.example.tabbed.Model.UserBill
 
 import com.example.tabbed.R
@@ -67,6 +66,7 @@ class FragAdminBill(private val listener: ClickListenerGetView) : Fragment(), Ad
                     if(response.isSuccessful){
                         val order = response.body()?.user_bill
                         showOrder(order)
+                        setView(response.body()!!.count)
                         //Toast.makeText(activity?.applicationContext, response.body()?.message, Toast.LENGTH_SHORT).show()
                     }
                     else{ //response.errorBody()?.string()
@@ -79,6 +79,10 @@ class FragAdminBill(private val listener: ClickListenerGetView) : Fragment(), Ad
         adapter.submitList(getOrder)
     }
 
+    private fun setView(count: Int){
+        if (count == 0) txtTitleBillAdminBill.text = "THERE IS NO PENDING BILL"
+        else txtTitleBillAdminBill.text = "BILL PENDING"
+    }
 
     private var timer = Timer()
     override fun onResume() {
@@ -87,14 +91,14 @@ class FragAdminBill(private val listener: ClickListenerGetView) : Fragment(), Ad
             override fun run() {
                 activity!!.runOnUiThread {
                     loadBill()
-                    Log.d(TAG, "LoadBill ")
+                    //Log.d(TAG, "LoadBill ")
                 }
             }
         }, 500, 10*1000)
     }
     override fun onStop() {
         super.onStop()
-        Log.d(TAG, "onStop")
+        //Log.d(TAG, "onStop")
         timer.cancel()
         timer = Timer()
         //timer.purge()

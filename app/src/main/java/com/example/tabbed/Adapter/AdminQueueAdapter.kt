@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tabbed.Backend.SharedPrefManager
 import com.example.tabbed.Model.OrderListDetail
 import com.example.tabbed.R
 import com.example.tabbed.Util.OrderListRecyclerViewClickListener
@@ -56,11 +57,19 @@ class AdminQueueAdapter(private val listener: OrderListRecyclerViewClickListener
             itemView.txtStatusAdminQueue.text = order.menu_status
             itemView.txtQntyAdminQueue.text = order.quantity.toString()
 
-            if (order.menu_status != "Waiting"){
-                itemView.btnCancelAdminQueue.visibility = View.GONE
-                //Log.d(TAG, order.toString())
-            } else {
+            val staffRole = SharedPrefManager.getInstance(view.context).loginStatus
+            if (staffRole == "Chef" && order.menu_status == "Waiting"){
                 itemView.btnCancelAdminQueue.visibility = View.VISIBLE
+            } else {
+                itemView.btnCancelAdminQueue.visibility = View.GONE
+            }
+
+            if(staffRole == "Chef" && order.menu_status != "Done") {
+                itemView.btnUpdateAdminQueue.visibility = View.VISIBLE
+            } else if(staffRole == "Waiter" && order.menu_status == "Done") {
+                itemView.btnUpdateAdminQueue.visibility = View.VISIBLE
+            } else {
+                itemView.btnUpdateAdminQueue.visibility = View.GONE
             }
 
             //button

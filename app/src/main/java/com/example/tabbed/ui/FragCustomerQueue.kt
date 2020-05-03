@@ -103,14 +103,14 @@ class FragCustomerQueue(private val listener: ClickListenerGetView) : Fragment()
             override fun run() {
                 activity!!.runOnUiThread {
                     loadOrder()
-                    Log.d(TAG, "LoadBill ")
+                    //.d(TAG, "Refresh CustomerQueue")
                 }
             }
         }, 500, 10*1000)
     }
     override fun onStop() {
         super.onStop()
-        Log.d(TAG, "onStop")
+        //Log.d(TAG, "onStop")
         timer.cancel()
         timer = Timer()
         //timer.purge()

@@ -67,7 +67,7 @@ class FragCustomerConfirmOrder(private val listener: ClickListenerGetView) : Fra
 
             val alert = dialogBuilder.create()
             alert.setTitle("CHECK YOUR LIST?")
-            alert.setMessage("Please check your list before submit")
+            alert.setMessage("Please check your list before submit.")
             alert.show()
 
         }

@@ -13,10 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AdminDetailActivity"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".AdminLogin" />
-        <activity android:name=".CustomerDetailActivity" />
+        <activity android:name=".DetailActivity" />
         <activity android:name=".CustomerLogin" />
         <activity
             android:name=".StartPage"
