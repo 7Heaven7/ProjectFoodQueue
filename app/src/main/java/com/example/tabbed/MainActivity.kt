@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tabbed.Backend.SharedPrefManager
@@ -127,14 +128,7 @@ class MainActivity : AppCompatActivity(), MenuRecyclerViewClickListener {
                 fragmentTransaction.commit()
             }
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        if (userRole == "Manager"){
-            Log.d(TAG, "onResumeShow")
-            //fabAddEditMenu.show()
-        }
+        onBackPressed()
     }
 
     fun hideFloatingActionButton(){ fabAddEditMenu.hide()}
@@ -161,5 +155,7 @@ class MainActivity : AppCompatActivity(), MenuRecyclerViewClickListener {
             }
         }
     }
+
+    override fun onBackPressed() { }
 
 }
