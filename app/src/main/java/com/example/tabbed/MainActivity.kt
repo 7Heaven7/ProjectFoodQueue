@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity(), MenuRecyclerViewClickListener {
     private var tabLayout: TabLayout? = null
     private var viewPager: CustomViewPager? = null
     private var user: UserModel? = null
-
     lateinit var userRole: String
 
     private val fragmentManager = supportFragmentManager
@@ -115,7 +114,6 @@ class MainActivity : AppCompatActivity(), MenuRecyclerViewClickListener {
                 alert.setTitle("LOGOUT")
                 alert.setMessage("Are you sure?")
                 alert.show()
-                true
             }
             true
         }
@@ -155,7 +153,5 @@ class MainActivity : AppCompatActivity(), MenuRecyclerViewClickListener {
             }
         }
     }
-
-    override fun onBackPressed() { }
 
 }
