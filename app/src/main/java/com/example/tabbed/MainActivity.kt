@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tabbed.Backend.SharedPrefManager
@@ -75,7 +74,7 @@ class MainActivity : AppCompatActivity(), MenuRecyclerViewClickListener {
             }
         }
         btnBillMain.setOnClickListener {
-            if (userRole == "Manager" || userRole == "Waiter"){
+            if (userRole == "Manager" || userRole == "Waiter" || userRole == "Admin"){
                 val intent = Intent(applicationContext, DetailActivity::class.java)
                 intent.putExtra("FRAGMENT_CODE", "AdminGetBill")
                 startActivity(intent)
@@ -118,7 +117,7 @@ class MainActivity : AppCompatActivity(), MenuRecyclerViewClickListener {
             true
         }
         fabAddEditMenu.setOnClickListener{
-            if (userRole == "Manager"){
+            if (userRole == "Manager" || userRole == "Admin"){
                 //fabAddEditMenu.hide()
                 val fragmentTransaction = fragmentManager.beginTransaction()
                 fragmentTransaction.addToBackStack(null)
@@ -126,7 +125,14 @@ class MainActivity : AppCompatActivity(), MenuRecyclerViewClickListener {
                 fragmentTransaction.commit()
             }
         }
-        onBackPressed()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (userRole == "Manager"){
+            Log.d(TAG, "onResumeShow")
+            //fabAddEditMenu.show()
+        }
     }
 
     fun hideFloatingActionButton(){ fabAddEditMenu.hide()}
@@ -142,7 +148,7 @@ class MainActivity : AppCompatActivity(), MenuRecyclerViewClickListener {
                 bundle.putString("type", menuData.type)
                 bundle.putInt("price", menuData.price)
                 fragmentAddEditMenu.arguments = bundle
-    
+
                 val fragmentTransaction = fragmentManager.beginTransaction()
                 fragmentTransaction.addToBackStack(null)
                 fragmentTransaction.replace(R.id.tabberlayout, fragmentAddEditMenu)
