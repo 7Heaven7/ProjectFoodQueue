@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity(), MenuRecyclerViewClickListener {
             }
         }
         btnBillMain.setOnClickListener {
-            if (userRole == "Manager" || userRole == "Waiter" || userRole == "Admin"){
+            if (userRole == "Manager" || userRole == "Waiter" || userRole == "Admin" || userRole == "Chef"){
                 val intent = Intent(applicationContext, DetailActivity::class.java)
                 intent.putExtra("FRAGMENT_CODE", "AdminGetBill")
                 startActivity(intent)
@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity(), MenuRecyclerViewClickListener {
             }
         }
         userlayout.setOnLongClickListener {
-            if (userRole != "Customer") {
+            if (userRole == "Manager" || userRole == "Waiter" || userRole == "Admin" || userRole == "Chef") {
                 val dialogBuilder = AlertDialog.Builder(this)
                 dialogBuilder.setMessage(it.toString())
                     // if the dialog is cancelable
@@ -124,14 +124,6 @@ class MainActivity : AppCompatActivity(), MenuRecyclerViewClickListener {
                 fragmentTransaction.replace(R.id.tabberlayout, fragmentAddEditMenu)
                 fragmentTransaction.commit()
             }
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        if (userRole == "Manager"){
-            Log.d(TAG, "onResumeShow")
-            //fabAddEditMenu.show()
         }
     }
 

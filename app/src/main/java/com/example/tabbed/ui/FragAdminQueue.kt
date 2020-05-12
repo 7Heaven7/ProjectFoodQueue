@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tabbed.Adapter.AdminQueueAdapter
 import com.example.tabbed.Backend.RetrofitClient
+import com.example.tabbed.Backend.SharedPrefManager
 import com.example.tabbed.Model.OrderListDetail
 import com.example.tabbed.R
 import com.example.tabbed.Response.AdminGetOrderResponse
@@ -27,7 +28,6 @@ import java.util.*
 class FragAdminQueue(private val listener: ClickListenerGetView) : Fragment(), OrderListRecyclerViewClickListener {
     private val TAG = "TAG FragAdminQueue"
     private val adapter = AdminQueueAdapter(this)
-    //lateinit var adminQueueViewModel: AdminQueueViewModel
     private var timer = Timer()
 
     override fun onCreateView(
@@ -44,15 +44,6 @@ class FragAdminQueue(private val listener: ClickListenerGetView) : Fragment(), O
         recyclerViewAdminQueue.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerViewAdminQueue.setHasFixedSize(true)
         recyclerViewAdminQueue.adapter = adapter
-
-
-/*        adminQueueViewModel = ViewModelProviders.of(this).get(AdminQueueViewModel::class.java)
-        Log.d(TAG, "WTF DOOD")
-        adminQueueViewModel.init()
-        adminQueueViewModel.getAdminQueueVM().observe(viewLifecycleOwner, Observer{
-            Log.d(TAG, "WTF DOODO")
-            adapter.submitList(it.orderlist)
-        })*/
 
     }
 
@@ -97,6 +88,7 @@ class FragAdminQueue(private val listener: ClickListenerGetView) : Fragment(), O
             1 -> txtTitleAdminQueue.text = "THERE IS ($count) ORDER"
             else -> txtTitleAdminQueue.text = "THERE ARE ($count) ORDERS"
         }
+
     }
 
     override fun onResume() {

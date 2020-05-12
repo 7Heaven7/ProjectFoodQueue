@@ -18,7 +18,6 @@ import com.example.tabbed.Response.DefaultResponse
 import com.example.tabbed.Util.ClickListenerGetView
 import com.example.tabbed.ui.*
 import kotlinx.android.synthetic.main.activity_customer_detail.*
-import kotlinx.android.synthetic.main.fragment_frag_admin_queue.*
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -130,62 +129,6 @@ class DetailActivity : AppCompatActivity(), ClickListenerGetView {
     //////////////////////////////// Server API ////////////////////////////////
 
     private fun sendOrderToServer(listToSendToServer: List<ToOrderItem>) {
-        if (user != null && user!!.role == "Customer") {
-            val user = (SharedPrefManager.getInstance(applicationContext).getUser)
-            var responseMessage: String? = "Fail"
-            val id_usertable = user.id_user
-            val listSize = listToSendToServer.size
-            for (i in 0 until listToSendToServer.size) {
-                val id_menu = listToSendToServer[i].menuData.id_menu
-                val quantity = listToSendToServer[i].quantity
-                RetrofitClient.instance.orderMenuAPI(id_menu, id_usertable, quantity)
-                    .enqueue(object : Callback<DefaultResponse> {
-                        override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
-                            Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
-                            Log.d("$TAG Order menu failed", t.message)
-                        }
-
-                        override fun onResponse(
-                            call: Call<DefaultResponse>,
-                            response: Response<DefaultResponse>
-                        ) {
-                            if (response.isSuccessful) {
-                                //Toast.makeText(applicationContext, response.body()?.message, Toast.LENGTH_SHORT).show()
-                                responseMessage = response.body()?.message.toString()
-                                Log.d(TAG, "1st if: " + listSize.toString())
-
-                                if (i == listSize - 1) {
-                                    Log.d(TAG, "2nd if: " + i.toString())
-                                    Toast.makeText(
-                                        fragmentCustomerOrder.context,
-                                        response.body()?.message,
-                                        Toast.LENGTH_LONG
-                                    ).show()
-                                    Log.d(TAG, responseMessage)
-
-                                    changeCurrentFragment("CustomerQueue")
-                                }
-                            } else { //response.errorBody()?.string()
-                                Toast.makeText(
-                                    fragmentCustomerOrder.context,
-                                    response.message(),
-                                    Toast.LENGTH_LONG
-                                ).show()
-                            }
-                        }
-                    })
-            } //end for loop
-        } else {
-            Toast.makeText(fragmentCustomerOrder.context, "Something went wrong", Toast.LENGTH_LONG)
-                .show()
-        }
-        //Toast.makeText(applicationContext, responseMessage, Toast.LENGTH_LONG).show()
-        //Log.d(TAG, responseMessage)
-
-
-    } //end fun
-
-    private fun sendOrderToServer2(listToSendToServer: List<ToOrderItem>) {
         if (user != null && user!!.role == "Customer") {
             val user = (SharedPrefManager.getInstance(applicationContext).getUser)
             val id_user = user.id_user
@@ -417,7 +360,7 @@ class DetailActivity : AppCompatActivity(), ClickListenerGetView {
     override fun getListToSendToServer(view: View, listToSendToServer: List<ToOrderItem>) {
         when (view.id) {
             R.id.btnSubmitCusOrder -> {
-                sendOrderToServer2(listToSendToServer)
+                sendOrderToServer(listToSendToServer)
             }
         }
     }
